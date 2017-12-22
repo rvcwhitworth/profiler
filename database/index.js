@@ -11,11 +11,11 @@ db.once('open', function() {
   console.log('mongoose connected successfully');
 });
 
-var profile = mongoose.Schema({
+var profileSchema = mongoose.Schema({
     //TODO write schema
 });
 
-var Profile = mongoose.model('Profile', userSchema);
+var Profile = mongoose.model('Profile', profileSchema);
 
 var saveProfile = function(profile) {
     //TODO

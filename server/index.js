@@ -7,7 +7,7 @@ var app = express();
 
 app.use(express.static(__dirname + '/../react-client/dist'));
 app.use(bodyParser.json());
-app.use(morgan.tiny());
+app.use(morgan('dev'));
 
 
 
@@ -16,7 +16,7 @@ app.get('/', function (req, res) {
 });
 
 
-const port = process.env.PORT || 1337;
+const port = process.env.PORT || 8008;
 app.listen(port, function() {
   console.log(`listening on port ${port}!`);
 });
