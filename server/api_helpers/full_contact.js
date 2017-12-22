@@ -1,5 +1,13 @@
-require = ('request');
+const request = require('request');
+const config = require('../../config.js');
 
-module.exports = function fetchUserInfo () {
-    //TODO
+module.exports = function fetchUserInfo (email, cb) {
+    const options = {
+        url: `https://api.fullcontact.com/v2/person.json?email=${email}`,
+        headers: {
+            'X-FullContact_APIKey': config.FULL_CONTACT_KEY
+        }
+    }
+    
+    request(options, cb);
 }
