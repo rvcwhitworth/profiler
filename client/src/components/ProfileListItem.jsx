@@ -12,11 +12,11 @@ class ProfileListItem extends React.Component {
 
   render () {
     return (
-      <li>
-        <a className={this.props.selected ? 'selected' : ''} onClick={this.handleClick.bind(this)}>
+      <a>
+        <li className={this.props.selected ? 'selected' : ''} onClick={this.handleClick.bind(this)}>
           {this.props.profile.email}
-        </a>
-      </li>
+        </li>
+      </a>
     );
   }
 }

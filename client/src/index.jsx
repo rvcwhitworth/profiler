@@ -42,10 +42,12 @@ class App extends React.Component {
   getProfiles () {
     $.get('/profiles')
     .done((profiles) => {
+      if (profiles.length) {
         this.setState({
             profiles: profiles,
             currentProfile: profiles[0]
         })
+      }
     })
   }
 
