@@ -4,19 +4,27 @@ import $ from 'jquery';
 import Search from './components/Search.jsx';
 import Profile from './components/Profile.jsx';
 import ProfileList from './components/ProfileList.jsx';
+import defaultData from '../../data.json';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      profiles: [],
-      currentProfile: null
+      profiles: defaultData,
+      currentProfile: defaultData[0]
 		}
-		this.handleSearch = this.handleSearch.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
+    this.handleSelect = this.handleSelect.bind(this);
   }
 
   componentDidMount () {
-    this.getProfiles();
+    //this.getProfiles();
+  }
+
+  handleSelect (profile) {
+    this.setState({
+      currentProfile: profile
+    });
   }
 
   handleSearch (email) {
@@ -26,7 +34,8 @@ class App extends React.Component {
 			data: email
 		})
 		.then((response) => {
-			console.log(response);
+      console.log('received response from server', response);
+      // this.getProfiles();
 		})
   }
 
@@ -44,7 +53,11 @@ class App extends React.Component {
     return (<div>
       <h1>Profiler</h1>
       <Search handleSearch={this.handleSearch} />
-      <ProfileList profiles={this.state.profiles} currentProfile={this.state.currentProfile} />
+      <ProfileList 
+      profiles={this.state.profiles} 
+      currentProfile={this.state.currentProfile} 
+      handleSelect={this.handleSelect}
+      />
       <Profile profile={this.state.currentProfile} />
     </div>)
   }

@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 const Profile = ({profile}) => (
-  <div>
-    This is the selected profile! {profile}
+  <div className="profile">
+    This is the stringified selected profile! {JSON.stringify(profile)}
   </div>
 );
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import $ from 'jquery';
 
 class Search extends React.Component {
 	constructor (props) {
@@ -30,11 +29,13 @@ class Search extends React.Component {
   render () {
     return (
       <div>
+        Enter email: 
         <input 
-        type="text" 
+        type="email" 
         value={this.state.email} 
         onChange={this.onChange.bind(this)} 
-        onKeyPress={this.handleKey.bind(this)} />
+        onKeyPress={this.handleKey.bind(this)} 
+        required />
         <button onClick={this.handleSubmit.bind(this)}>Search</button>
       </div>
     )
