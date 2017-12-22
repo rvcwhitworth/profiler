@@ -1,20 +1,17 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-var db = require('../database');
 var morgan = require('morgan');
+var controller = require('./controllers');
 
 var app = express();
 
 app.use(express.static(__dirname + '/../client/dist'));
-app.use(bodyParser.json());
+app.use(bodyParser.text());
 app.use(morgan('dev'));
 
+app.get('/profiles', controller.get);
 
-
-app.get('/', function (req, res) {
-  res.end();
-});
-
+app.post('/profiles', controller.post); 
 
 const port = process.env.PORT || 8008;
 app.listen(port, function() {

@@ -12,18 +12,37 @@ db.once('open', function() {
 });
 
 var profileSchema = mongoose.Schema({
-    //TODO write schema
+    info: String,
+    email: String
 });
 
 var Profile = mongoose.model('Profile', profileSchema);
 
-var saveProfile = function(profile) {
-    //TODO
+var saveProfile = function(email, profile, cb) {
+    Profile.find({email: email}, (err, profiles) => {
+        if (err) console.error('Error during save to db:', err);
+
+        if (!profiles.length) {
+            Profile.create({
+                info: JSON.parse(profile),
+                email: email
+            }, cb);
+        }
+    });
 };
 
-var fetchProfile = function(id) {
-    //TODO
+var updateProfile = function(email, profile, cb)  {
+    Profile.update({email: email}, {info: JSON.parse(profile)}, cb);
+}
+
+var fetchProfiles = function(cb) {
+    Profile.find().exec(cb);
+}
+
+var profileExists = function(email, cb) {
+    Profile.find({email: email}).exec(cb);
 }
 
 module.exports.saveProfile = saveProfile;
-module.exports.fetchProfile = fetchProfile;
+module.exports.fetchProfiles = fetchProfiles;
+module.exports.updateProfile = updateProfile;

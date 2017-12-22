@@ -18,7 +18,7 @@ class App extends React.Component {
   }
 
   componentDidMount () {
-    //this.getProfiles();
+    this.getProfiles();
   }
 
   handleSelect (profile) {
@@ -33,9 +33,9 @@ class App extends React.Component {
 			contentType: 'text/plain',
 			data: email
 		})
-		.then((response) => {
+		.done((response) => {
       console.log('received response from server', response);
-      // this.getProfiles();
+      this.getProfiles();
 		})
   }
 
