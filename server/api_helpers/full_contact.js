@@ -5,7 +5,7 @@ module.exports = function fetchUserInfo (email, cb) {
     const options = {
         url: `https://api.fullcontact.com/v2/person.json?email=${email}`,
         headers: {
-            'X-FullContact-APIKey': config.FULL_CONTACT_KEY
+            'X-FullContact-APIKey': process.env.API_KEY || config.FULL_CONTACT_KEY
         }
     }
 

@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect(process.env.PROD_MONGODB || 'mongodb://localhost/profiler', {useMongoClient: true});
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/profiler', {useMongoClient: true});
 
 var db = mongoose.connection;
 
