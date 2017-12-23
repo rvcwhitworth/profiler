@@ -1,5 +1,6 @@
 var fetchUserInfo = require('../api_helpers/full_contact.js');
 var db = require('../../database');
+var request = require('request');
 
 const get = function (req, res) {
   db.fetchProfiles((profiles) => {
@@ -47,9 +48,19 @@ const refetchFromApi = function(err, profile) {
     }, 1000 * 60 * 3);
 };
 
+const preview = function(req, res) {
+  request(req.body, function(err, getResponse, body) {
+    if (err) console.error('error retrieving preview', err);
+    else {
+      respond(res, 200, body);
+    }
+  });
+}
+
 const respond = function(res, statusCode, body = null) {
   statusCode === 200 ? res.status(statusCode).send(body) : res.status(statusCode).end();
 };
 
 module.exports.get = get;
 module.exports.post = post;
+module.exports.preview = preview;

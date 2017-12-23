@@ -34,10 +34,10 @@ class Search extends React.Component {
 
   render () {
     return (
-      <div>
-        Enter email: 
+      <div className="search">
         <input 
         type="email" 
+        placeholder="Email address"
         value={this.state.email} 
         onChange={this.onChange.bind(this)} 
         onKeyPress={this.handleKey.bind(this)} 

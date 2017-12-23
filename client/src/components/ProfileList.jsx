@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import ProfileListItem from './ProfileListItem.jsx';
 
 const ProfileList = ({profiles, currentProfile, handleSelect}) => {

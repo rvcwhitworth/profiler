@@ -1,5 +1,9 @@
 body {
-  margin-left: 15%;
+  display: grid;
+}
+
+.search {
+  background-color: green;
 }
 
 span {
@@ -19,16 +23,21 @@ ul {
 }
 
 .profileImage {
+  float: center;
   border-radius: 10%;
-  max-width: 15%;
+  max-width: 20%;
   height: auto;
   margin-right: 1%;
 }
 
-.profileListItem {
-  padding: .3% 0 0 .3%;
+.profileImage:hover {
+  max-width: 50%;
+}
+
+a.profileListItem li {
   margin-bottom: .3%;
   border-radius: 5%;
+  padding: 1% 0 0 1%;
 }
 
 .profileListImage {
@@ -48,18 +57,28 @@ ul {
 }
 
 .profile {
-  margin-left: 3%;
-  width: 70%;
+  background-color: magenta;
+  margin-left: 1%;
+  width: 15%;
+}
+
+.sidebar {
+  width: 19%;
 }
 
 .profileList {
+  background-color: cyan;
   padding-right: 1%;
-  width: 20%;
   margin-top: 2%;
-  border-right: 1px solid black;
+  border-right: 1px solid black;  
+}
+
+.preview {
+  width: 60%;
 }
 
 .profile,
-.profileList {
+.profileList,
+.preview {
   float: left;
 }

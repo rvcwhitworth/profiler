@@ -1,7 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
-const Profile = ({profile}) => (
+const Profile = ({profile, handleClick}) => (
   <div className="profile">
     <h3>{ profile.info.contactInfo ? profile.info.contactInfo.fullName : profile.email }</h3>
     { profile.info.photos ? profile.info.photos.map((photo, i) => (
@@ -10,11 +9,13 @@ const Profile = ({profile}) => (
   }
     <div className="platforms">
     { console.log(profile)}
+      <ul>
       { profile.info.socialProfiles ? 
          profile.info.socialProfiles.map((prof, i) => (
-           <span key={i}><a href={prof.url}>{ prof.typeName }</a></span>
+           <li key={i}><a onClick={handleClick} href={prof.url}>{ prof.typeName }</a></li>
          )) : ''
       }
+      </ul>
     </div>
   </div>
 );
