@@ -2,13 +2,8 @@ var fetchUserInfo = require('../api_helpers/full_contact.js');
 var db = require('../../database');
 
 const get = function (req, res) {
-  db.fetchProfiles((err, profiles) => {
-    if (err) {
-      console.error('Error retrieving from db', err);
-      respond(res, 500);
-    } else {
+  db.fetchProfiles((profiles) => {
       respond(res, 200, profiles);
-    }
   })
 };
 
@@ -16,9 +11,10 @@ const post = function (req, res) {
   const email = req.body;
   
   fetchUserInfo(email, (err, apiResponse, apiBody) => {
+    console.log('api body', apiBody, 'type:', typeof apiBody);
     if (apiResponse.statusCode === 404) {
       console.log('No results found for', email);
-      db.saveProfile(email, 'Nothing found!', (err, profile) => respond(res, 404));   
+      respond(res, 404);   
       
     } else if (apiResponse.statusCode === 202) {
       console.log('Waiting for results for', email, 'will try again in 3 minutes');

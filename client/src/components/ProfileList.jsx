@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import ProfileListItem from './ProfileListItem.jsx';
 
 const ProfileList = ({profiles, currentProfile, handleSelect}) => {
-  return !profiles.length ? <div> No profiles are stored! </div> :
-  <div>
+  return !profiles.length ? <div className="profileList"> No profiles are stored! </div> :
+  <div className="profileList">
     <ul>
     {profiles.map((profile, i) => (
         <ProfileListItem 

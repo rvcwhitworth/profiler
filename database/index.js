@@ -23,20 +23,30 @@ var saveProfile = function(email, profile, cb) {
         if (err) console.error('Error during save to db:', err);
 
         if (!profiles.length) {
-            Profile.create({
-                info: JSON.parse(profile),
+            var newProf = new Profile({
+                info: profile,
                 email: email
-            }, cb);
+            });
+            
+            console.log('created profile model', newProf);
+            newProf.save(cb);
         }
     });
 };
 
 var updateProfile = function(email, profile, cb)  {
-    Profile.update({email: email}, {info: JSON.parse(profile)}, cb);
+    Profile.update({email: email}, {info: profile}, cb);
 }
 
 var fetchProfiles = function(cb) {
-    Profile.find().exec(cb);
+    Profile.find().exec((err, profiles) => {
+        cb(profiles.map((profile) => {
+            return {
+                email: profile.email,
+                info: JSON.parse(profile.info)
+            }
+        }));
+    });
 }
 
 var profileExists = function(email, cb) {

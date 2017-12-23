@@ -1,0 +1,65 @@
+body {
+  margin-left: 15%;
+}
+
+span {
+  margin-right: 1%;
+}
+
+li {
+  cursor: pointer;
+}
+
+input {
+  margin: 0 1% 0 1%;
+}
+
+ul {
+  list-style: none;
+}
+
+.profileImage {
+  border-radius: 10%;
+  max-width: 15%;
+  height: auto;
+  margin-right: 1%;
+}
+
+.profileListItem {
+  padding: .3% 0 0 .3%;
+  margin-bottom: .3%;
+  border-radius: 5%;
+}
+
+.profileListImage {
+  border-radius: 15%;
+  max-width: 10%;
+  height: auto;
+  margin-right: 1%;
+}
+
+.selected {
+  font-weight: bold;
+  background-color: lightgray;
+}
+
+.row {
+  width: 100%;
+}
+
+.profile {
+  margin-left: 3%;
+  width: 70%;
+}
+
+.profileList {
+  padding-right: 1%;
+  width: 20%;
+  margin-top: 2%;
+  border-right: 1px solid black;
+}
+
+.profile,
+.profileList {
+  float: left;
+}

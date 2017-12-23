@@ -27,14 +27,14 @@ class App extends React.Component {
     });
   }
 
-  handleSearch (email) {
+  handleSearch (email, cb) {
 		$.post({
 			url: '/profiles',
 			contentType: 'text/plain',
 			data: email
 		})
 		.done((response) => {
-      console.log('received response from server', response);
+      cb();
       this.getProfiles();
 		})
   }
@@ -42,6 +42,7 @@ class App extends React.Component {
   getProfiles () {
     $.get('/profiles')
     .done((profiles) => {
+      console.log(profiles);
       if (profiles.length) {
         this.setState({
             profiles: profiles,
@@ -55,12 +56,14 @@ class App extends React.Component {
     return (<div>
       <h1>Profiler</h1>
       <Search handleSearch={this.handleSearch} />
-      <ProfileList 
-      profiles={this.state.profiles} 
-      currentProfile={this.state.currentProfile} 
-      handleSelect={this.handleSelect}
-      />
-      <Profile profile={this.state.currentProfile} />
+      <div className="row">
+        <ProfileList 
+          profiles={this.state.profiles} 
+          currentProfile={this.state.currentProfile} 
+          handleSelect={this.handleSelect}
+        />
+        <Profile profile={this.state.currentProfile} />
+      </div>
     </div>)
   }
 }

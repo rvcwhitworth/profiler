@@ -7,7 +7,7 @@ class Search extends React.Component {
     this.state = {
       email: ''
     };
-
+    this.clearSearch = this.clearSearch.bind(this);
   }
 
   onChange (e) {
@@ -16,8 +16,14 @@ class Search extends React.Component {
     });
   }
 
+  clearSearch () {
+    this.setState({
+      email: ''
+    })
+  }
+
   handleSubmit () {
-    this.props.handleSearch(this.state.email);
+    this.props.handleSearch(this.state.email, this.clearSearch);
   }
 
   handleKey (e) {
