@@ -17,7 +17,7 @@ class App extends React.Component {
 		}
     this.handleSearch = this.handleSearch.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
-    this.handlePreviewSelect = this.handlePreviewSelect.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
     
   }
 
@@ -31,18 +31,16 @@ class App extends React.Component {
     });
   }
 
-  handlePreviewSelect (e) {
-    e.preventDefault();
-
-    $.post({
-			url: '/preview',
+  handleDelete (profile) {
+    $.ajax({
+      method: 'DELETE',
+			url: '/profiles',
 			contentType: 'text/plain',
-			data: e.target.href
+			data: profile.email
 		})
-    .then((htmlContent) => {
-      console.log('received reply for preview', htmlContent);
-      $('.preview').html(htmlContent);      
-    });
+		.done((response) => {
+      this.getProfiles();
+		});
   }
 
   handleSearch (email, cb) {
@@ -52,15 +50,15 @@ class App extends React.Component {
 			data: email
 		})
 		.done((response) => {
-      cb();
       this.getProfiles();
-		})
+		}).catch((error) => {
+      window.alert('No information found for this email!');
+    })
   }
 
   getProfiles () {
     $.get('/profiles')
     .done((profiles) => {
-      console.log(profiles);
       if (profiles.length) {
         this.setState({
             profiles: profiles,
@@ -81,7 +79,7 @@ class App extends React.Component {
             handleSelect={this.handleSelect}
           />
         </div>
-      <Profile profile={this.state.currentProfile} handleClick={this.handlePreviewSelect} />
+      <Profile profile={this.state.currentProfile} handleClick={this.handleDelete} />
        { /** <Preview profile={this.state.previewUrl} /> **/ }
     </div>)
   }

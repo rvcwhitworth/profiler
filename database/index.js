@@ -53,6 +53,11 @@ var profileExists = function(email, cb) {
     Profile.find({email: email}).exec(cb);
 }
 
+var deleteProfile = function(email, cb) {
+    Profile.remove({email: email}, cb);
+}
+
 module.exports.saveProfile = saveProfile;
 module.exports.fetchProfiles = fetchProfiles;
 module.exports.updateProfile = updateProfile;
+module.exports.deleteProfile = deleteProfile;

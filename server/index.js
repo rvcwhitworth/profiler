@@ -13,7 +13,9 @@ app.get('/profiles', controller.get);
 
 app.post('/profiles', controller.post); 
 
-app.post('/preview', controller.preview);
+app.delete('/profiles', controller.delete);
+
+// app.post('/preview', controller.preview);
 
 const port = process.env.PORT || 8008;
 app.listen(port, function() {
