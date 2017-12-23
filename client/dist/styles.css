@@ -1,17 +1,13 @@
 body {
-  display: grid;
+  margin-left: 15%;
 }
 
 .search {
-  background-color: green;
+  /*background-color: green;*/
 }
 
 span {
   margin-right: 1%;
-}
-
-li {
-  cursor: pointer;
 }
 
 input {
@@ -38,6 +34,7 @@ a.profileListItem li {
   margin-bottom: .3%;
   border-radius: 5%;
   padding: 1% 0 0 1%;
+  cursor: pointer;  
 }
 
 .profileListImage {
@@ -49,7 +46,7 @@ a.profileListItem li {
 
 .selected {
   font-weight: bold;
-  background-color: lightgray;
+  /*background-color: green;*/
 }
 
 .row {
@@ -57,20 +54,26 @@ a.profileListItem li {
 }
 
 .profile {
-  background-color: magenta;
+  /*background-color: green;*/
   margin-left: 1%;
-  width: 15%;
+  width: 50%;
+  padding: 1% 1% 0 1%;
 }
 
 .sidebar {
-  width: 19%;
+  width: 25%;
+  /*background-color: green;*/
 }
 
 .profileList {
-  background-color: cyan;
+  /*background-color: green;*/
   padding-right: 1%;
   margin-top: 2%;
   border-right: 1px solid black;  
+}
+
+.deleteProfile {
+  float: right;
 }
 
 .preview {
@@ -81,4 +84,13 @@ a.profileListItem li {
 .profileList,
 .preview {
   float: left;
+}
+
+.subImage {
+  width: 5%;
+  height: auto;
+}
+
+h2 {
+  display: inline;
 }

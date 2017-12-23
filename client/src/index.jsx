@@ -41,7 +41,7 @@ class App extends React.Component {
 		})
     .then((htmlContent) => {
       console.log('received reply for preview', htmlContent);
-      $('.preview').html(htmlContent);
+      $('.preview').html(htmlContent);      
     });
   }
 
@@ -72,9 +72,8 @@ class App extends React.Component {
 
   render () {
     return (<div>
-      <div className="row">
-        <h1>Profiler</h1>
         <div className="sidebar">
+          <h1>Profiler</h1>
           <Search handleSearch={this.handleSearch} />
           <ProfileList 
             profiles={this.state.profiles} 
@@ -82,9 +81,8 @@ class App extends React.Component {
             handleSelect={this.handleSelect}
           />
         </div>
-        <Profile profile={this.state.currentProfile} handleClick={this.handlePreviewSelect} />
-        <Preview profile={this.state.previewUrl} />
-      </div>
+      <Profile profile={this.state.currentProfile} handleClick={this.handlePreviewSelect} />
+       { /** <Preview profile={this.state.previewUrl} /> **/ }
     </div>)
   }
 }
